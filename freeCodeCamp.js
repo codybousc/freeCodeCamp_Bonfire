@@ -81,3 +81,65 @@ function end(str, target) {
 
 
 console.log(end('Bastian', 'n'));
+
+//Bonfire #10
+
+function repeat(str, num) {
+    if (num > 0) {
+        return str.repeat(num);
+    }
+    else {
+        return "";
+    }
+
+}
+
+console.log(repeat('abc', 3));
+
+//Bonfire #11
+
+function truncate(str, num) {
+   stringLength = str.length;
+    if (stringLength > num) {
+        newStr = str.slice(0, num - 3); //the minus three accounts for the three dots.
+        return newStr + "...";
+    }
+    else {
+        return str;
+    }
+}
+
+console.log(truncate('A-tisket a-tasket A green and yellow basket', 11));
+
+//Bonfire #12
+
+function chunk(arr, size) {
+  emptyArr = [];
+  secondIterationArr = arr.slice(size, size + size);
+  thirdIterationArr = arr.slice(size + size, size + size + size);
+  newArr = arr.slice(0, size);
+  remainingArr = arr.slice(size, arr.length);
+
+    if (size * 2 == arr.length) {
+        emptyArr.push(newArr);
+        emptyArr.push(remainingArr);
+        return emptyArr;
+    }
+    else if (size * 3 == arr.length) {
+         emptyArr.push(newArr);
+         emptyArr.push(secondIterationArr);
+         emptyArr.push(thirdIterationArr);
+         return emptyArr;
+    }
+    else {
+        emptyArr.push(newArr);
+        emptyArr.push(remainingArr);
+        return emptyArr;
+
+    }
+
+}
+
+console.log(chunk(["a", "b", "c", "d", "e", "f"], 4));
+
+//Bonfire #13
