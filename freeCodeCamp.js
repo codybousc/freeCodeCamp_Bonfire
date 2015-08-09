@@ -58,3 +58,26 @@ for(i = 0; i <= 3; i++) {
 }
 
 console.log(largestOfFour(randomArr));
+
+//Bonfire #9 Confirm the Ending
+
+function end(str, target) {
+  strLength = str.length;
+  lastLet = str.substr(strLength - 1, strLength)
+  newStr= str.split(" ");
+  lastWord = newStr[newStr.length - 1];
+  if (lastLet === target) {
+    return true;
+
+  }
+   else if (lastWord === target) {
+     return true;
+        }
+    else {
+    return false;
+    }
+  }
+
+
+
+console.log(end('Bastian', 'n'));
