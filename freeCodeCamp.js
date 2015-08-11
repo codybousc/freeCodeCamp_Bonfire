@@ -143,3 +143,93 @@ function chunk(arr, size) {
 console.log(chunk(["a", "b", "c", "d", "e", "f"], 4));
 
 //Bonfire #13
+
+/*
+My Notes
+if all of the letters in the second element are present in the first element, return true. else, return false.
+i need to check each letter of the second Element by iterating over the entire first array to see if it's present. right now, i'm sorting them both and checking each index of each string and seeing if they match.
+
+Scott's Advice
+loop through second element and for each iteration loop through first element (make sure variable in nested loop is different from var in first loop) check if second loop and index[i] = first loop at index[j]
+
+or
+
+easier option
+loop through index of second element and see if element is present in first element (using indexOf)
+
+***last version passes specs but is a complete mess. also, the 'return true' portion is only checking to see whether or not the indices array has more 'true' elements than the length of the second element. i should find a more accurate test.
+REFACTOR USING indexOf
+*/
+
+
+
+function mutation(arr) {
+  var indices = [];
+  var falsies = [];
+  var firstElement = arr[0].split("").sort().join("").toLowerCase();
+  var secondElement = arr[1].split("").sort().join("").toLowerCase();
+    console.log("First Element: " + firstElement);
+    console.log("Second Element: " + secondElement);
+    var x = 0;
+
+    for(i = 0; i < firstElement.length; i ++) {
+         var secondElemLetters = secondElement[x];
+         var firstElemLetters = firstElement[i];
+        if (secondElemLetters == firstElemLetters) {
+            indices.push(true);
+            console.log(indices);
+        }
+        else {
+            falsies.push(false);
+        }
+        x++;
+        console.log("First Element Letters:" + firstElemLetters);
+        console.log("Second Element Letters:" + secondElemLetters);
+
+    }
+    if (indices.length === secondElement.length) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+console.log(mutation(['zyxwvutsrqponmlkjihgfedcba', 'qrstu']));
+
+//Bonfire #14
+//Version 1. Not working yet
+
+var arr = [7, 'ate', '', false, 0];
+
+function bouncer(arr) {
+  for(i = 0; i < arr.length; i++) {
+      if (arr[i] != false && arr[i] != 0) {
+          return true;
+      }
+      else {
+         return false;
+      }
+  }
+
+}
+
+var someVar = arr.filter(bouncer);
+
+console.log(someVar);
+
+//Version 2. Works
+
+function bouncer(arr) {
+  return arr.filter(function (val) {
+    if (val) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+}
+
+
+
+bouncer([7, 'ate', '', false, 9]);
