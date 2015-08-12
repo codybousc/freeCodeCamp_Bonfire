@@ -233,3 +233,97 @@ function bouncer(arr) {
 
 
 bouncer([7, 'ate', '', false, 9]);
+
+//Bonfire #15
+function where(collection, source) {
+    var text = "";
+    var arr = [];
+    for (var objects in collection) {
+        var wtf = collection[objects];//each of the three objects
+        var collectionLast = wtf.last;
+        var sourceLast = source.last;
+        if (collectionLast === sourceLast) {
+            arr.push(wtf);
+        }
+     }
+    return arr;
+}
+
+console.log(where([{ first: 'Romeo', last: 'Montague' }, { first: 'Mercutio', last: null }, { first: 'Tybalt', last: 'Capulet' }], { last: 'Capulet' }));
+
+
+//Bonfire #16
+function destroyer(arr) {
+    var firstArg = arguments[0];
+    var secondArg = arguments[1];
+    var thirdArg = arguments[2];
+    for (var i = 0; i < firstArg.length; i++) {
+         if(secondArg == firstArg[i]) {
+             var index = firstArg.indexOf(firstArg[i]);
+             firstArg.splice(i, 1);
+
+         }
+        if(thirdArg == firstArg[i]) {
+            var index2 = firstArg.indexOf(firstArg[i]);
+            firstArg.splice(i, 1);
+
+        }
+
+    }
+  return firstArg;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+//Bonfire #17
+function where(arr, num) {
+    var sortedArr = arr.sort();
+    for (var i = 0; i < arr.length; i++) {
+        if(num > sortedArr[i] && num < sortedArr[i + 1]) {
+            return sortedArr.indexOf(sortedArr[i + 1]);
+        }
+        else if (num === sortedArr[i]) {
+            return sortedArr.indexOf(sortedArr[i]);
+        }
+}
+}
+
+//Bonfire #18
+
+function sumAll(arr) {
+    var sortedArr = arr.sort();
+    var min = sortedArr[0];
+    var max = sortedArr.slice(-1)[0]; //apparently arr[-1] doesn't return the last element in an array in JS!
+    var arrRunLength = max - min;
+    for (var i = 0; i < arrRunLength; i++) {
+        if(sortedArr[i + 1] !== sortedArr[i] + 1) {
+            sortedArr.splice(i + 1, 0, sortedArr[0] + i); //this was adding the first element of the array back to the array, which i 'solved' by using the .shift() method below.
+        }
+    }
+    sortedArr.shift();
+    return sortedArr;
+}
+
+console.log(sumAll([1, 9, 3]));
+
+//Bonfire #19
+
+function sumAll(arr) {
+    var sortedArr = arr.sort(function(a, b){return a-b}); //funky JS Sorting ish
+    console.log(sortedArr);
+    var min = sortedArr[0];
+    var max = sortedArr.slice(-1)[0]; //apparently arr[-1] doesn't return the last element in an array in JS!
+    var arrRunLength = max - min;
+    for (var i = 0; i < arrRunLength; i++) {
+        if(sortedArr[i + 1] !== sortedArr[i] + 1) {
+            sortedArr.splice(i + 1, 0, sortedArr[0] + i);
+        }
+    }
+            sortedArr.shift();
+
+            return eval(sortedArr.join('+')); //adds all elements in the array
+    }
+    
+    console.log(sumAll([5, 10]));
+
+    //Bonfire #20
