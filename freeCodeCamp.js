@@ -372,3 +372,40 @@ function sumAll(arr) {
 }
 
   console.log(diff(['andesite', 'grass', 'dirt', 'pink wool', 'dead shrub'], ['diorite', 'andesite', 'grass', 'dirt', 'dead shrub']));
+
+//Bonfire #21
+
+function convert(num) {
+ 	var numArr = [];
+    while(num > 100) {
+        numArr.push("C");
+        num -= 100;
+    }
+    while(num > 50) {
+        numArr.push("L");
+        num -= 50;
+    }
+    while(num > 10) {
+        numArr.push("X");
+        num -= 10;
+    }
+    while(num >= 5) {
+        numArr.push("V");
+        num -= 5;
+    }
+
+    while(num >= 1) {
+        numArr.push("I");
+        num -= 1;
+    }
+
+    for(var i = 0; i < numArr.length; i++) {
+        if (numArr[i] === "V" &&numArr[i+1] === "I" && numArr[i+2] === "I" && numArr[i+3] === "I" && numArr[i+4] === "I") {
+            numArr.splice(numArr.indexOf(numArr[i]), 5, "IX");
+        }
+
+    }
+
+    return numArr.join("");
+
+}
