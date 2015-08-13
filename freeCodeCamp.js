@@ -168,32 +168,34 @@ function mutation(arr) {
   var falsies = [];
   var firstElement = arr[0].split("").sort().join("").toLowerCase();
   var secondElement = arr[1].split("").sort().join("").toLowerCase();
-    console.log("First Element: " + firstElement);
-    console.log("Second Element: " + secondElement);
-    var x = 0;
 
-    for(i = 0; i < firstElement.length; i ++) {
-         var secondElemLetters = secondElement[x];
-         var firstElemLetters = firstElement[i];
-        if (secondElemLetters == firstElemLetters) {
-            indices.push(true);
-            console.log(indices);
-        }
-        else {
-            falsies.push(false);
-        }
-        x++;
-        console.log("First Element Letters:" + firstElemLetters);
-        console.log("Second Element Letters:" + secondElemLetters);
+    for(i = 0; i < secondElement.length; i ++) {
+        var secondElemLetters = secondElement[i];
+            for(j = 0; j < firstElement.length; j++) {
+                var firstElemLetters = firstElement[j];
+                    if (secondElemLetters == firstElemLetters) {
+                        indices.push(true);
+                        console.log(indices);
+                    }
+                    else {
+                        falsies.push(false);
+                        console.log(falsies);
+                    }
+            }
 
     }
-    if (indices.length === secondElement.length) {
-        return true;
-    }
-    else {
-        return false;
-    }
+                    if (indices.length >= secondElement.length) {
+                        return true;
+                    }
+                    else if (indices.length < secondElement.length) {
+                        return false;
+                    }
+                    else {
+                        return "What the fuck?"
+                    }
+
 }
+
 
 console.log(mutation(['zyxwvutsrqponmlkjihgfedcba', 'qrstu']));
 
@@ -323,7 +325,50 @@ function sumAll(arr) {
 
             return eval(sortedArr.join('+')); //adds all elements in the array
     }
-    
+
     console.log(sumAll([5, 10]));
 
     //Bonfire #20
+    //This doesn't work for several reasons:
+    // 1) If the starting arrays are the same length and both contain unique items,
+    function diff(arr1, arr2) {
+  var newArr = [];
+    //sorts the arrays
+    var sortedArr1 = arr1.sort(function(a, b){return a-b});
+    var sortedArr2 = arr2.sort(function(a, b){return a-b});
+
+    //Finds array longest in length
+      var longest;
+      var shortest;
+      if(arr1.length > arr2.length) {
+          longest = sortedArr1;
+          shortest = sortedArr2;
+      }
+      else {
+           longest = sortedArr2;
+           shortest = sortedArr1;
+      }
+         var longOriginalLength = longest.length;
+         var shortOriginalLength = shortest.length;
+     for (var i = longOriginalLength - 1; i >= 0; i--) {
+         for (var j = shortOriginalLength - 1; j >= 0; j--) {
+             if (longest[i] === shortest[j]) {
+                 var removeL = longest.indexOf(longest[i]);
+                 var removeS = shortest.indexOf(shortest[j]);
+                 longest.splice(removeL, 1);
+                 shortest.splice(removeS, 1);
+                 }
+
+             }
+
+     } //outer for loop closing tag
+     if (arr1.length === arr2.length) {
+         var answer = longest.concat(shortest);
+         return answer;
+     }
+     else {
+     return longest;
+     }
+}
+
+  console.log(diff(['andesite', 'grass', 'dirt', 'pink wool', 'dead shrub'], ['diorite', 'andesite', 'grass', 'dirt', 'dead shrub']));
