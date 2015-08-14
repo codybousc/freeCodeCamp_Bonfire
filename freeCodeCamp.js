@@ -506,3 +506,21 @@ function fearNotLetter(str) {
 }
 
 fearNotLetter('abce');
+
+//Bonfire #26
+
+function boo(bool) {
+  if (bool === true) {
+    return true;
+  }
+  else if (bool === false) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+console.log(boo(false));
+
+//Bonfire #27
