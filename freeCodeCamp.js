@@ -420,7 +420,7 @@ function replace(str, before, after) {
        if (before[0] === before[0].toUpperCase()) {
 			isUpCase = true;
        }
- 
+
     for (var i = 0; i < strArr.length; i++) {
         if (strArr[i] == before) {
             if (isUpCase === true) {
@@ -440,3 +440,29 @@ function replace(str, before, after) {
 }
 
 console.log(replace("A quick brown fox jumped over the lazy dog", "Jumped", "leaped"));
+
+//Bonfire # 23
+function translate(str) {
+    var strLength = str.length;
+    if(str[0] === "a" || str[0] === "e" || str[0] === "i" || str[0] === "o" || str[0] === "u") {
+        str = str.concat("way");
+        return str;
+    }
+    else if (str[0] !== "a" && str[0] !== "e" && str[0] !== "i" && str[0] !== "o" && str[0] !== "u" &&
+             str[1] !== "a" && str[1] !== "e" && str[1] !== "i" && str[1] !== "o" && str[1] !== "u" ) {
+        str = str.split("");
+        var cutLetters = str.splice(0, 2);
+        str.push(cutLetters + "ay");
+        return str.join("").replace(/,/g, '');
+    }
+    else {
+        str = str.split("");
+        var cutLetter = str.splice(0, 1);
+        str.push(cutLetter + "ay")
+        return str.join("").replace(/,/g, '');
+
+    }
+
+}
+
+console.log(translate("glove"));
