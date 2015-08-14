@@ -409,3 +409,34 @@ function convert(num) {
     return numArr.join("");
 
 }
+
+//Bonfire #22
+
+function replace(str, before, after) {
+	var strArr = str.split(" ");
+    var beforeLength = before.length;
+    var isUpCase = false;
+    //Checks to see whether first letter of before is upper case
+       if (before[0] === before[0].toUpperCase()) {
+			isUpCase = true;
+       }
+ 
+    for (var i = 0; i < strArr.length; i++) {
+        if (strArr[i] == before) {
+            if (isUpCase === true) {
+                startingIndex = strArr.indexOf(strArr[i]);
+                after = after.charAt(0).toUpperCase() + after.slice(1);
+            	strArr.splice(startingIndex, 1, after);
+                return strArr.join(" ");
+            }
+            else {
+         		startingIndex = strArr.indexOf(strArr[i]);
+         		after = after.charAt(0).toLowerCase() + after.slice(1);
+         		strArr.splice(startingIndex, 1, after);
+         		return strArr.join(" ");
+            }
+         }
+    }
+}
+
+console.log(replace("A quick brown fox jumped over the lazy dog", "Jumped", "leaped"));
