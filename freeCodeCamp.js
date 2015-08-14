@@ -466,3 +466,27 @@ function translate(str) {
 }
 
 console.log(translate("glove"));
+
+//Bonfire #24
+
+function pair(str) {
+    var arrStr = str.split("");
+    newArr = [];
+    for (var i = 0; i < arrStr.length; i++) {
+        if (arrStr[i] === "A") {
+            newArr.push(["A", "T"]);
+        }
+        else if (arrStr[i] === "T") {
+         	newArr.push(["T", "A"]);
+        }
+        else if (arrStr[i] === "C") {
+         	newArr.push(["C", "G"]);
+        }
+        else if (arrStr[i] === "G") {
+            newArr.push(["G", "C"]);
+        }
+
+    }
+
+    return newArr;
+}
