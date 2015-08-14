@@ -490,3 +490,19 @@ function pair(str) {
 
     return newArr;
 }
+
+//Bonfire #25
+
+function fearNotLetter(str) {
+    for (var i = 0; i < str.length; i++) {
+        if (str.charCodeAt([i + 1]) - str.charCodeAt([i]) === 2) {
+            var eye = str.charCodeAt([i]); //equals 99
+            var eyeMinus = str.charCodeAt([i + 1]); //equals 101 (subtract 1 for missing let charCode)
+            var skippedLetCharCode = str.charCodeAt([i + 1]) - 1;
+            var skippedLet = String.fromCharCode(skippedLetCharCode);
+            return skippedLet;
+        }
+    }
+}
+
+fearNotLetter('abce');
