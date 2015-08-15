@@ -739,3 +739,29 @@ function find(arr, func) {
 }
 
 console.log(find([1, 2, 3, 4], function(num){ return num % 2 === 0; }));
+
+//Bonfire #34
+
+function drop(arr, func) {
+    if (func(arr[0]) === true) {
+        return arr;
+    }
+    else if (func(arr[1]) === true) {
+        arr.shift();
+        return arr;
+    }
+    else if (func(arr[2]) === true) {
+        arr.shift();
+        arr.shift();
+        return arr;
+    }
+    else {
+        arr.shift();
+        arr.shift();
+        arr.shift();
+        arr.shift();
+        return arr;
+    }
+}
+
+drop([1, 2, 3], function(n) {return n < 3; });
