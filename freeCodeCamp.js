@@ -583,7 +583,6 @@ function unite (arr1, arr2, arr3) {
 }
 
 //Bonfire #28
-//Works for & and first occurance of <
 function convert(str) {
     var result = str.replace(/&/g, "&amp;").replace(/<>/g, "&lt;&gt;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/["]+/g, "&quot;").replace(/'/g, '&apos;');
     return result;
@@ -591,3 +590,10 @@ function convert(str) {
 }
 
 //Bonfire #29
+
+function spinalCase(str) {
+  var newStr = str.replace(/\s/g, '-').replace(/_/g, "-").replace(/([a-z])([A-Z])/g, '$1 $2').replace(/\s/g, '-');
+  return newStr.toLowerCase();
+}
+
+spinalCase('This Is Spinal Tap');
