@@ -669,3 +669,50 @@ function sumPrimes(num) {
 }
 
 console.log(sumPrimes(10));
+
+//Bonfire #32
+function smallestCommons(arr) {
+    var sortedArr = arr.sort(function(a,b) {
+        return a - b;
+    });
+
+    var array = [];
+    var lastElement = sortedArr.slice(-1)[0];
+    var leastCM = lastElement * 2;
+    var isEvenlyDivisible = false;
+
+    //creates array of provide range
+    for(var i = 1; i <= lastElement; i++) {
+        array.push(i);
+    }
+    console.log(array);
+    while(isEvenlyDivisible === false) {
+        console.log("LEAST COMMON MULTIPLE = " + leastCM);
+        for(var i = array[0]; i <= array.length; i++) {
+            console.log("I = " + i);
+            if(leastCM % i === 0) {
+                isEvenlyDivisible = true;
+                console.log(leastCM + " IS DIVISIBLE BY " + i);
+            }
+            else {
+                isEvenlyDivisible = false;
+                console.log(leastCM + " IS NOT DIVISIBLE BY " + i);
+                break;
+            }
+
+        }//inner for loop closing bracket
+        	if(isEvenlyDivisible === true) {
+                return leastCM;
+                break;
+            }
+        	else {
+        		leastCM += 1;
+            }
+
+    }//outer while closing bracket
+    return leastCM;
+
+}
+
+
+console.log(smallestCommons([5,1]));
