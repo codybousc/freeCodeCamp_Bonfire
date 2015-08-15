@@ -716,3 +716,26 @@ function smallestCommons(arr) {
 
 
 console.log(smallestCommons([5,1]));
+
+//Bonfire #33
+
+function find(arr, func) {
+  var num = 0;
+  var divisibleByTwo = false;
+
+    for(var i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            var answer = arr[i];
+            divisibleByTwo = true;
+            break;
+        }
+    }
+    if (divisibleByTwo === true) {
+        return answer;
+    }
+    else {
+     return undefined;
+    }
+}
+
+console.log(find([1, 2, 3, 4], function(num){ return num % 2 === 0; }));
