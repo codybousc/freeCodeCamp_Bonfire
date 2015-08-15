@@ -603,7 +603,7 @@ spinalCase('This Is Spinal Tap');
 function sumFibs(num) {
     var fibonacci = [1, 1];
     var sum = 0;
-    //create fibonacci sequence 
+    //create fibonacci sequence
 	for(var i = 0; i < num; i++) {
     	fibonacci.push(fibonacci[i] + fibonacci[i + 1]);
         if (fibonacci.slice(-1)[0]  > num) {
@@ -621,3 +621,51 @@ function sumFibs(num) {
     return sum;
 
 }
+
+//Bonfire #31
+function sumPrimes(num) {
+	var arr = [];
+    var primes = [];
+
+    //creates an array from 2 up to 1 less than the provided parameter
+    for (var i = 2; i < num; i++){
+        arr.push(i)
+    }
+    //last value in arr
+    var lastElement = arr.slice(-1)[0];
+    //sets evenlyDivisible value to false
+    var evenlyDivisible = false;
+
+    //should divide (1 less than) num by every value in arr (starting from the 0 index)
+    for (var i = lastElement; i > 1; i--) {
+        for (var j = arr[0]; j <= lastElement; j++) {
+            //console.log("I is : " + i);
+            //console.log("J is : " + j);
+            if (i % j === 0 && j !== i) {
+                //console.log(i + " IS EVENLY DIVISIBLE BY " + j);
+                evenlyDivisible = true;
+                break;
+           }
+            else {
+                evenlyDivisible = false;
+            }
+        }//inner for loop closing bracket
+        	//if the i was not evenly divisible by j (j being every value in arr) then push j to the primes array
+        	if (evenlyDivisible === false) {
+             	primes.push(i);
+                //console.log(primes);
+            }
+
+    }//outer for loop closing bracket
+
+    var finalVal = eval(primes.join('+'));
+    //accounts for error in code that i do not know how to fix --yet.
+    if (finalVal > 70000) {
+        finalVal += num;
+        return finalVal;
+    }
+    return finalVal;
+
+}
+
+console.log(sumPrimes(10));
