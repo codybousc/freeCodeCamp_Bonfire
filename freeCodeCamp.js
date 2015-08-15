@@ -597,3 +597,27 @@ function spinalCase(str) {
 }
 
 spinalCase('This Is Spinal Tap');
+
+//Bonfire #30
+
+function sumFibs(num) {
+    var fibonacci = [1, 1];
+    var sum = 0;
+    //create fibonacci sequence 
+	for(var i = 0; i < num; i++) {
+    	fibonacci.push(fibonacci[i] + fibonacci[i + 1]);
+        if (fibonacci.slice(-1)[0]  > num) {
+            fibonacci.pop();
+            break;
+        }
+}
+  	//return sum of odd fibonacci values less than provided num
+    for(var i = 0; i < fibonacci.length; i++) {
+    	if(fibonacci[i] % 2 !== 0) {
+        sum += fibonacci[i];
+    	}
+    }
+    console.log(fibonacci);
+    return sum;
+
+}
