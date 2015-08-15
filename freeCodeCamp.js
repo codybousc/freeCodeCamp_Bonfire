@@ -524,3 +524,70 @@ function boo(bool) {
 console.log(boo(false));
 
 //Bonfire #27
+//Version 1. Super Funk & not working.
+function unite(arr1, arr2, arr3) {
+    var finalArr = [];
+    Array.prototype.unique = function() {
+	     var n = [];
+	      for(var i = 0; i < this.length; i++)
+	       {
+		         if (n.indexOf(this[i]) == -1) n.push(this[i]);
+	          }
+	           return n;
+	}
+    //removes any duplicates in initial arrays
+    var nodupArrOne = arr1.unique();
+    var nodupArrTwo = arr2.unique();
+    var nodupArrThree = arr3.unique();
+
+    //Push initial array
+    finalArr.push(sortedArrOne);
+
+    for (var i = 0; i < arr1.length; i++) {
+        for (var j = 0; j < arr2.length; i++) {
+            if (arr2[j] !== arr1[i]) {
+                finalArr.push(arr2[j]);
+                console.log("New finalArr = " + finalArr);
+            }
+        } //inner for loop closing bracket
+    }//outer for loop closing bracket
+
+}//funciton closing bracket
+
+
+console.log(unite([1, 2, 2, 3], [5, 2, 1, 4], [2, 1]));
+
+//Version 2. Super CLEAN
+
+function unite (arr1, arr2, arr3) {
+  var finalArray = [];
+  var currIndex;
+
+  for (var i = 0; i < arr1.length; i++) {
+    currIndex = arr1[i];
+    if (finalArray.indexOf(currIndex) === -1) {
+      finalArray.push(currIndex);
+    }
+  }
+  for (var i = 0; i < arr2.length; i++) {
+    if (finalArray.indexOf(arr2[i]) === -1) {
+      finalArray.push(arr2[i]);
+    }
+  }
+  for (var i = 0; i < arr3.length; i++) {
+    if (finalArray.indexOf(arr3[i]) === -1) {
+      finalArray.push(arr3[i]);
+    }
+  }
+  return finalArray;
+}
+
+//Bonfire #28
+//Works for & and first occurance of <
+function convert(str) {
+    var result = str.replace(/&/g, "&amp;").replace(/<>/g, "&lt;&gt;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/["]+/g, "&quot;").replace(/'/g, '&apos;');
+    return result;
+
+}
+
+//Bonfire #29
