@@ -765,3 +765,12 @@ function drop(arr, func) {
 }
 
 drop([1, 2, 3], function(n) {return n < 3; });
+
+//Bonfire #35
+
+function steamroller(arr) {
+	return arr.reduce(function (flat, toFlatten) {
+    return flat.concat(Array.isArray(toFlatten) ? steamroller(toFlatten) : toFlatten);
+  }, []);
+
+}
