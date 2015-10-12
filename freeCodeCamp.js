@@ -774,3 +774,48 @@ function steamroller(arr) {
   }, []);
 
 }
+// Bonfire #36
+
+
+
+
+
+
+//Make a person
+
+var Person = function(firstAndLast) {
+
+  this.name = firstAndLast;
+
+  this.getFirstName = function() {
+    return this.name.split(' ')[0];
+  };
+
+  this.getLastName = function() {
+    return this.name.split(' ')[1];
+  };
+
+  this.getFullName = function() {
+    return this.name;
+  };
+
+  this.setFirstName = function(first) {
+    var temp = this.name.split(' ');
+    temp[0] = first;
+    this.name = temp.join(' ');
+  };
+
+  this.setLastName = function(last) {
+    var temp = this.name.split(' ');
+    temp[1] = last;
+    this.name = temp.join(' ');
+  };
+
+};
+
+Person.prototype.setFullName = function(firstAndLast) {
+    this.name = firstAndLast;
+};
+
+var bob = new Person('Bob Ross');
+bob.getFullName();
