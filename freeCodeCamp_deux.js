@@ -94,3 +94,14 @@ function end(str, target) {
 console.log(end("He has to give me a new name", "name"));
 
 #9
+function repeat(str, num) {
+    finalStr = ""
+    for (var i = 0; i < num; i++) {
+        finalStr = finalStr + str;
+    }
+    return finalStr;
+}
+
+console.log(repeat("abc", 3));
+
+#10
