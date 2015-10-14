@@ -134,3 +134,19 @@ function chunk(arr, size) {
 
 
 console.log(chunk([0, 1, 2, 3, 4, 5], 2));
+
+#12
+
+function slasher(arr, howMany) {
+  if (howMany == 0) {
+      return arr;
+  }
+  else if (howMany > arr.length) {
+      return [];
+  }
+  else {
+  newArr = arr.slice(2);
+  return newArr;
+  }
+}
+slasher([1, 2, 3], 2);
