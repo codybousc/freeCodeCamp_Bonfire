@@ -150,3 +150,31 @@ function slasher(arr, howMany) {
   }
 }
 slasher([1, 2, 3], 2);
+
+#13
+function mutation(arr) {
+    var firstWord = arr[0].toLowerCase();
+    var secondWord = arr[1].toLowerCase();
+    var hasDuplicates = (/([a-z])\1/i).test(secondWord);
+    var matches = 0;
+    for(var i = 0; i < arr[0].length; i++) {
+        for(var j = 0; j < arr[1].length; j++) {
+            var firstWordLets = firstWord[i];
+            var secondWordLets = secondWord[j];
+            if (firstWordLets == secondWordLets) {
+                matches += 1;
+                break
+            }
+
+        }//inner closing loop
+
+    }//outer closing loop
+  if (matches >= secondWord.length || hasDuplicates == true) {
+      return true;
+  }
+  else {
+      return false;
+  }
+}
+
+mutation(["hello", "hey"]);
