@@ -178,3 +178,16 @@ function mutation(arr) {
 }
 
 mutation(["hello", "hey"]);
+
+#14
+function bouncer(arr) {
+  return arr.filter(function (val) {
+    if (val) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+}
+
+#15
