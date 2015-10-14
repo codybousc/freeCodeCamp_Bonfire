@@ -116,3 +116,21 @@ function truncate(str, num) {
 console.log(truncate("A-tisket a-tasket A green and yellow basket", 11));
 
 #11
+function chunk(arr, size) {
+   var finalArr = [];
+   var arrLength = arr.length;
+   var firstArr = arr.slice(0,size);
+       if (arrLength / size <= 2) {
+   			var remainingArr = arr.slice(-(arrLength - firstArr.length));
+   			finalArr.push(firstArr, remainingArr);
+       }
+       if (arrLength / size > 2) {
+           var secondArr = arr.slice(size, size * 2);
+           var thirdArr = arr.slice(size * 2, size * 3);
+           finalArr.push(firstArr, secondArr, thirdArr);
+       }
+   return finalArr;
+}
+
+
+console.log(chunk([0, 1, 2, 3, 4, 5], 2));
