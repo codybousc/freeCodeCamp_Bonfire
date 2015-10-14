@@ -105,3 +105,14 @@ function repeat(str, num) {
 console.log(repeat("abc", 3));
 
 #10
+function truncate(str, num) {
+    var sliceLength = (num - str.length) - 3;
+	if (str.length > num) {
+    	str = str.slice(0, sliceLength).concat("...");
+    }
+    return str;
+}
+
+console.log(truncate("A-tisket a-tasket A green and yellow basket", 11));
+
+#11
