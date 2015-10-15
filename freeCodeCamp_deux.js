@@ -209,3 +209,20 @@ function destroyer(arr) {
 }
 
 console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+
+#16
+function where(arr, num) {
+    var indexToPlaceNum;
+  for(var i = 0; i < arr.length; i++) {
+      var current = arr[i];
+      if(num > current) {
+          indexToPlaceNum = i + 1;
+      }
+      else if (num < arr[0]) {
+          indexToPlaceNum = 0;
+      }
+  }
+  return indexToPlaceNum;
+}
+
+console.log(where([10, 20, 30, 40, 50], 35));
