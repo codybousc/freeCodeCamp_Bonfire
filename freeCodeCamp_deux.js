@@ -191,25 +191,21 @@ function bouncer(arr) {
 }
 
 #15
-//Rough Draft, not functioning yet, but the general idea is there
-
 function destroyer(arr) {
-  var firstArg = arguments[0];
-  var secondArg = arguments[1];
-  var thirdArg = arguments[2];
-  for(var i = 0; i < firstArg.length; i++) {
-      var arguments = firstArg[i]
-      var arrayElements = arr[i];
-          if (firstArg[i] == secondArg) {
-              firstArg.splice(i, 1);
-          }
-           if (firstArg[i] == thirdArg) {
-              var indexOfElem = arr[i];
-              firstArg.splice(i, 1);
-           }
-  }//outer closing loop
-
-  return firstArg;
+    var finalArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        var choppingBlock = false;
+        var current = arr[i];
+        for(var j = 1;!choppingBlock && j < arguments.length; j++) {
+            if(current === arguments[j]) {
+                choppingBlock = true;
+            }
+        }//inner closing loop
+        if(!choppingBlock) {
+            finalArr.push(current);
+    	}
+	}//outer closing loop
+    return finalArr;
 }
 
 console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
