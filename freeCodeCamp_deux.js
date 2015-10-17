@@ -226,3 +226,21 @@ function where(arr, num) {
 }
 
 console.log(where([10, 20, 30, 40, 50], 35));
+
+#17
+function sumAll(arr) {
+  arr.sort(function(a,b) {
+  return a - b;
+});
+   var newArr = [];
+   var lastElem = arr.pop();
+
+   for(var i = arr[0]; i <= lastElem; i++) {
+       newArr.push(i);
+   }
+       return newArr.reduce(function(a,b) {
+           return a + b;
+    });
+}
+
+console.log(sumAll([4, 1]));

@@ -1,0 +1,46 @@
+body {
+  background-image: url("http://s2.postimg.org/5y828kha1/planeincloudss.jpg");
+  background-repeat: no-repeat;
+  background-size:cover
+}
+
+.title {
+  text-align: center;
+  color: black;
+}
+
+.space {
+  height: 150px;
+}
+
+.textbox {
+  //background-color: black;
+  height: 250px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.quote {
+  margin: 20px;
+  padding: 20px;
+}
+.innerbox {
+  background-color: white;
+  height: 190px;
+  width: 1400px;
+  margin: auto;
+  opacity: .9;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.btn-block {
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dropem
+  align: center; {
+  top: 100px;
+}
