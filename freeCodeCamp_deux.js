@@ -246,41 +246,28 @@ function sumAll(arr) {
 console.log(sumAll([4, 1]));
 
 #18
-//not functioning yet, and needs to be refactored! it's getting a bit unwieldy and there's got to be a better approach.
+//refactored
 
 function diff(arr1, arr2) {
     var finalArr = [];
-    for(var i = 0; i < arr1.length; i++) {
-        var arr1Elem = arr1[i];
-        console.log("ARR1ELEM ======= " + arr1Elem);
-        for(var j = 0; j < arr2.length; j++) {
-            var arr2Elem = arr2[j];
-            console.log("arr2Elem = " + arr2Elem);
-            	if (arr2.indexOf(arr1Elem) == -1) {
-            		finalArr.push(arr1Elem);
-            		console.log("FINAL ARR FROM FIRST COND ====== " + finalArr);
-                    arr1Elem = arr1[i + 1];
-                    i++;
-                    break;
-        		}
-            	if (arr1.indexOf(arr2Elem) == -1 && finalArr.indexOf(arr2Elem) == -1) {
-                        console.log("ARRR2 J-1 ==============================" + arr2[j]);
-                    	finalArr.push(arr2Elem);
-                    	console.log("FINAL ARR FROM SECOND COND====== " + finalArr);
-                    	break;
+    var arr1Elem = arr1[i];
 
-                }
+    for(var item in arr1) {
+      if(arr2.indexOf(arr1[item]) == -1) {
+        finalArr.push(arr1[item]);
+      }
+    }
 
-        }//inner closing
+    for(var elem in arr2) {
+      if(arr1.indexOf(arr2[elem]) == -1){
+        finalArr.push(arr2[elem]);
+      }
+    }
 
-
-    }//outer closing
     return finalArr;
 
 }
 arr1 = ["andesite", "grass", "dirt", "pink wool", "dead shrub"];
 arr2 = ["diorite", "andesite", "grass", "dirt", "dead shrub"]
-//should return ["diorite", "pink wool"]
-
 
 console.log(diff(arr1,arr2));
