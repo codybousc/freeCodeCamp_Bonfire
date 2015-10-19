@@ -1,5 +1,5 @@
 body {
-  background-image: url("http://s2.postimg.org/5y828kha1/planeincloudss.jpg");
+  background-image: url("http://s3.postimg.org/c2w6qi8ab/henry.jpg");
   background-repeat: no-repeat;
   background-size:cover
 }
@@ -13,34 +13,37 @@ body {
   height: 150px;
 }
 
-.textbox {
-  //background-color: black;
-  height: 250px;
-  margin: 20px;
-  padding: 20px;
-}
-
 .quote {
-  margin: 20px;
+  margin: 18px;
   padding: 20px;
 }
 .innerbox {
+  position: relative;
   background-color: white;
   height: 190px;
   width: 1400px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 300px;
+  position: float bottom;
   opacity: .9;
   border-radius: 25px;
   padding: 20px;
+  text-align: center;
 }
 
 .btn-block {
   width: 20%;
   margin-left: auto;
   margin-right: auto;
+  postition: relative; bottom: 0;
 }
 
-.dropem
-  align: center; {
-  top: 100px;
+
+
+.quote {
+  vertical-align: middle;
+  margin: 0 auto;
+  font-size: 22px;
+  text-align: justify;
 }
