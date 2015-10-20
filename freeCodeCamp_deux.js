@@ -271,3 +271,35 @@ arr1 = ["andesite", "grass", "dirt", "pink wool", "dead shrub"];
 arr2 = ["diorite", "andesite", "grass", "dirt", "dead shrub"]
 
 console.log(diff(arr1,arr2));
+
+#19
+
+function convert(num) {
+    finalStr = "";
+    while(num >= 50) {
+        finalStr += "L";
+        num -= 50;
+    }
+    while(num >= 10) {
+        finalStr += "X";
+        num -= 10;
+    }
+    while(num >= 5) {
+        finalStr += "V";
+        num -= 5;
+    }
+    while(num >= 1) {
+        finalStr += "I";
+        num -= 1;
+    }
+    finalStr = finalStr.split("");
+    var tester = new RegExp(["I","I","I"]);
+    if (tester.test(finalStr) == true) {
+        var cutIndex = finalStr.indexOf("I","I","I");
+        finalStr.splice(cutIndex - 1, 5);
+        finalStr = finalStr.concat("I", "X");
+    }
+
+    return finalStr.join("");
+}
+console.log(convert(12));
