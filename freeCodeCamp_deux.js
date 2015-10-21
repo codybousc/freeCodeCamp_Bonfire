@@ -303,3 +303,23 @@ function convert(num) {
     return finalStr.join("");
 }
 console.log(convert(12));
+
+#20
+//passes first test, but not following tests (where .last doesn't work since they don't have 'last' as keys. i.e. where([{ "a": 1 }, { "a": 1 }, { "a": 1, "b": 2 }], { "a": 1 }) should return [{ "a": 1 }, { "a": 1 }, { "a": 1, "b": 2 }])
+
+function where(collection, source) {
+    var firstArg = arguments[0];
+    var secArg = arguments[1];
+    finalArr = [];
+  Object.keys(firstArg).forEach(function (key) {
+    var val = firstArg[key];
+      console.log("VAL + " + val);
+    	if (val.last == secArg.last) {
+            finalArr.push(val);
+        }
+});
+
+  return finalArr;
+}
+
+console.log(where([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
