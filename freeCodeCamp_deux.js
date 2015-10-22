@@ -334,5 +334,39 @@ function myReplace(str, before, after) {
 	var finalStr = str.replace(regPattern, after);
     return finalStr;
 }
-    
+
 console.log(myReplace("A quick brown fox Jumped over the lazy dog", "Jumped", "leaped"));
+
+#22
+
+function translate(str) {
+    var vowels = /[aeiou]+/i
+    if (vowels.test(str[0])) {
+            return str.concat("way");
+        }
+    var doubleConsonate = false;
+    for(var i = 0; i < str.length; i++) {
+        if(!vowels.test(str[i]) && vowels.test(str[i + 1])) {
+            var subStr = str.substring(str[i], 1);
+            break
+        }
+        if(!vowels.test(str[i]) && !vowels.test(str[i + 1])) {
+            var subStr = str.substring(str[i], 2);
+            doubleConsonate = true;
+            break
+        }
+
+    }//loop closing bracket
+     str = str.concat(subStr + "ay");
+    var strArr = str.split("");
+    if (doubleConsonate) {
+        strArr.shift();
+        strArr.shift();
+    }
+    else {
+       strArr.shift();
+    }
+ 	return strArr.join("");
+}
+
+console.log(translate("cconsonant"));
