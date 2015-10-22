@@ -370,3 +370,26 @@ function translate(str) {
 }
 
 console.log(translate("cconsonant"));
+
+#23
+
+function pair(str) {
+    var finalArr = [];
+    for(var i = 0; i < str.length; i++) {
+        if(str[i] == "A") {
+            finalArr.push(["A", "T"])
+        }
+        if(str[i] == "T") {
+            finalArr.push(["T", "A"]);
+        }
+        if(str[i] == "C") {
+            finalArr.push(["C", "G"]);
+        }
+        if(str[i] == "G") {
+            finalArr.push(["G", "C"]);
+        }
+    }
+ return finalArr;
+}
+
+console.log(pair("GCG"));
