@@ -425,3 +425,45 @@ function boo(bool) {
 console.log(boo(false));
 
 #26
+//Massive Beast Begging to be refactored.
+
+function unite(arr1, arr2, arr3, arr4) {
+  var finalArr = [];
+  //checks first arr 
+  for(var i = 0; i < arr1.length; i++) {
+      var regerToCheck = new RegExp(arr1[i]);
+      if(arr1[i] == arr1[0]){
+          finalArr.push(arr1[i]);
+      }
+      if(regerToCheck.test(finalArr) != true) {
+          finalArr.push(arr1[i]);
+      }
+  }//closing bracket
+  //checks second arr if present
+  for(var i = 0; i < arr2.length; i++) {
+      var regerToCheck = new RegExp(arr2[i]);
+      if(regerToCheck.test(finalArr) != true) {
+          finalArr.push(arr2[i]);
+      }
+  }//closing bracket
+  //checks third arr if present
+   if (arguments.length > 2) {
+   		for(var i = 0; i < arr3.length; i++) {
+      		var regerToCheck = new RegExp(arr3[i]);
+      		if(regerToCheck.test(finalArr) != true) {
+          		finalArr.push(arr3[i]);
+      		}
+  		}//closing bracket
+   }
+    //checks fourth arr if present
+    if (arguments.length > 3) {
+   		for(var i = 0; i < arr4.length; i++) {
+      		var regerToCheck = new RegExp(arr4[i]);
+      		if(regerToCheck.test(finalArr) != true) {
+          		finalArr.push(arr4[i]);
+      		}
+  		}//closing bracket
+   }
+  return finalArr;
+
+}
