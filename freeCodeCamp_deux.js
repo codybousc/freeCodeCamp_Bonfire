@@ -429,7 +429,7 @@ console.log(boo(false));
 
 function unite(arr1, arr2, arr3, arr4) {
   var finalArr = [];
-  //checks first arr 
+  //checks first arr
   for(var i = 0; i < arr1.length; i++) {
       var regerToCheck = new RegExp(arr1[i]);
       if(arr1[i] == arr1[0]){
@@ -467,3 +467,31 @@ function unite(arr1, arr2, arr3, arr4) {
   return finalArr;
 
 }
+
+#27
+
+function convert(str) {
+  var ampersand = /&/g;
+  var lesserThan = /</g;
+  var greaterThan = />/g;
+  var doubleQuote = /"/g;
+  var apostrophe = /'/g;
+  if (ampersand.test(str) == true) {
+      str = str.replace(ampersand, "&amp;");
+  }
+  if (lesserThan.test(str) == true) {
+      str = str.replace(lesserThan, "&lt;");
+  }
+  if (greaterThan.test(str) == true) {
+      str = str.replace(greaterThan, "&gt;");
+  }
+  if (doubleQuote.test(str) == true) {
+      str = str.replace(doubleQuote, "&quot;");
+  }
+  if (apostrophe.test(str) == true) {
+      str = str.replace(apostrophe, "&apos;");
+  }
+  return str;
+}
+
+convert("Dolce & Gabbana");
