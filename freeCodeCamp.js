@@ -586,7 +586,6 @@ function unite (arr1, arr2, arr3) {
 function convert(str) {
     var result = str.replace(/&/g, "&amp;").replace(/<>/g, "&lt;&gt;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/["]+/g, "&quot;").replace(/'/g, '&apos;');
     return result;
-
 }
 
 //Bonfire #29
