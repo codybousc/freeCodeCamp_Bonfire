@@ -393,3 +393,17 @@ function pair(str) {
 }
 
 console.log(pair("GCG"));
+
+#24
+Missing Letters
+
+function fearNotLetter(str) {
+  for(var i = 0; i < str.length; i++){
+      if(str.charCodeAt(i + 1) - str.charCodeAt(i) > 1) {
+          var secondChar = str.charCodeAt(i + 1) -1;
+          return String.fromCharCode(secondChar);
+      }
+  }
+}
+
+console.log(fearNotLetter("abce"));
