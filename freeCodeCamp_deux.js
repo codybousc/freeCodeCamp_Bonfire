@@ -469,7 +469,7 @@ function unite(arr1, arr2, arr3, arr4) {
 }
 
 #27
-
+a)
 function convert(str) {
   var ampersand = /&/g;
   var lesserThan = /</g;
@@ -495,3 +495,12 @@ function convert(str) {
 }
 
 convert("Dolce & Gabbana");
+
+b) //refactored
+
+function convert(str) {
+    var result = str.replace(/&/g, "&amp;").replace(/<>/g, "&lt;&gt;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/["]+/g, "&quot;").replace(/'/g, '&apos;');
+    return result;
+}
+
+#28
