@@ -510,3 +510,32 @@ function spinalCase(str) {
 }
 
 console.log(spinalCase("The_Andy_Griffith_Show"));
+
+#29
+
+function sumFibs(num) {
+    var sumOfOdds = 0;
+    fibArr = [];
+    //establishes initial array
+    for(var i = 0; i < num; i++) {
+        if(i == 0 || i == 1){
+            fibArr.push(1);
+        }
+        else {
+            fibArr.push((fibArr[i -1]) + (fibArr[i - 2]));
+        }
+    }
+    //sums all odd elements in array less than or equal to provided num
+   	for(var j = 0; j < fibArr.length; j++) {
+        if(fibArr[j] <= num) {
+            if(fibArr[j] % 2 != 0) {
+                sumOfOdds += fibArr[j];
+            }
+        }
+    }
+    return sumOfOdds;
+    }
+
+
+
+console.log(sumFibs(4));
