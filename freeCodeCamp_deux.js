@@ -407,3 +407,21 @@ function fearNotLetter(str) {
 }
 
 console.log(fearNotLetter("abce"));
+
+#25
+
+function boo(bool) {
+  if (bool === true) {
+    return true;
+  }
+  else if (bool === false) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+console.log(boo(false));
+
+#26
