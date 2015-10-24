@@ -539,3 +539,24 @@ function sumFibs(num) {
 
 
 console.log(sumFibs(4));
+
+#30
+
+function sumPrimes(num) {
+    var sumOfAllPrimes = 0;
+	for(var i = 3; i <= num; i++) {
+        var isPrime = true;
+        var allNums = i;
+        for(var j = 2; j < allNums; j++) {
+            if(allNums % j == 0) {
+                isPrime = false;
+                break
+            }
+        }//inner closing bracket
+        	if(isPrime == true) {
+                sumOfAllPrimes += allNums;
+            }
+    }//outer closing bracket
+    return sumOfAllPrimes + 2;
+}
+console.log(sumPrimes(10));
