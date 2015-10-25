@@ -560,3 +560,40 @@ function sumPrimes(num) {
     return sumOfAllPrimes + 2;
 }
 console.log(sumPrimes(10));
+
+#31
+//it has to loop nearly 50k times to find the answer. obivously not the optimal answer.
+
+function smallestCommons(arr) {
+    var SCM,
+        largestParam = Math.max(arr[0], arr[1]),
+        largestParamIterator = largestParam,
+        numRangeArr = [],
+        matchCounter = 0,
+        scmFound = false;
+    //create array of range of numbers
+    for(var i = 1; i <= largestParam; i++) {
+        numRangeArr.push(i);
+    }
+    //while loop runs while SCM not found
+    while(scmFound == false) {
+        for(var i = 1; i < 50000; i++) {
+           largestParam += largestParamIterator;
+            for(var j = 0; j < numRangeArr.length; j++) {
+                 if(largestParam % numRangeArr[j] == 0) {
+                     scmFound = true
+                }
+                else {
+                    scmFound = false;
+                    break
+                }
+            }//inner closing bracket
+            if (scmFound) {
+                return largestParam;
+       		 }
+        }//outer closing bracket      
+        scmFound = true;  //save me from endless loops while testing
+    }//while loop closing bracket
+}
+
+console.log(smallestCommons([1,13]));
