@@ -591,9 +591,22 @@ function smallestCommons(arr) {
             if (scmFound) {
                 return largestParam;
        		 }
-        }//outer closing bracket      
+        }//outer closing bracket
         scmFound = true;  //save me from endless loops while testing
     }//while loop closing bracket
 }
 
 console.log(smallestCommons([1,13]));
+
+#32
+
+function find(arr, func) {
+    var evenlyDivisible = function(array) {
+        for(var i = 0; i < array.length; i++) {
+            if(array[i] % 2 == 0) {
+                return array[i];
+            }
+        }
+    }
+     return result = evenlyDivisible(arr)
+}
