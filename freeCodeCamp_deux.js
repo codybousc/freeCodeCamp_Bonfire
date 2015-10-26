@@ -610,3 +610,21 @@ function find(arr, func) {
     }
      return result = evenlyDivisible(arr)
 }
+
+#33
+
+function drop(arr, func) {
+    var secondArg = arguments[1];
+    var arrLength = arr.length;
+    for(var i = 0; i < arrLength; i++) {
+        if(func(arr[0])) {
+            break
+        }
+        else {
+            arr.shift();
+        }
+    }
+    return arr;
+}
+
+console.log(drop([1, 2, 3], function(n) {return n > 3; })) ;
