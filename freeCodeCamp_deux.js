@@ -642,3 +642,32 @@ function binaryAgent(str) {
 }
 
 binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+
+#35
+
+function every(collection, pre) {
+  //iterates through all objects in array
+	for(var i = 0; i < collection.length; i++) {
+  	var indivObject = collection[i];
+    //returns false if object does not have key
+    if(!indivObject.hasOwnProperty(pre)) {
+    	return false;
+     }
+    else {
+      //iterates through all objects with pre as keys
+      for(key in indivObject) {
+        //only checks correct keys
+        if(key == pre) {
+          //if value of key is falsey, return false. else, return true.
+          if(!indivObject[key]) {
+          	return false;
+          }
+        }
+      }
+    }
+	}
+  return true;
+}
+
+
+console.log(every([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex"));
