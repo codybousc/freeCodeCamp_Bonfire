@@ -628,3 +628,17 @@ function drop(arr, func) {
 }
 
 console.log(drop([1, 2, 3], function(n) {return n > 3; })) ;
+
+#34
+
+function binaryAgent(str) {
+  binaryArr = str.split(' ');
+  finalStringArr = [];
+
+   for(i=0;i < binaryArr.length;i++){
+   finalStringArr.push(String.fromCharCode(parseInt(binaryArr[i], 2)));
+  }
+  return finalStringArr.join('');
+}
+
+binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
