@@ -671,3 +671,35 @@ function every(collection, pre) {
 
 
 console.log(every([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex"));
+
+
+#36
+
+function add() {
+  //set initial var to be used in case of only one argument passed
+  var firstArg = arguments[0];
+  //iterate through all arguments passed and return undefined if not numbers
+  	for(var i = 0; i < arguments.length; i++) {
+    	if(typeof arguments[i] !== 'number') {
+           return undefined;
+      }
+    }
+    //add both number arguments if total argument length is two
+    if(arguments.length == 2) {
+    	return arguments[0] + arguments[1];
+    }
+    //if argument length is 1, return a function adding firstArg variable and second variable passed in
+    return function(b) {
+      //verify that second variable is a number
+    	if(typeof b != 'number') {
+      	return undefined;
+      }
+      else {
+        //add firstArg variable and second passed in number
+      	return firstArg + b;
+      }
+    };
+}
+
+
+add(2,3);
