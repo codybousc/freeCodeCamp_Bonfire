@@ -841,9 +841,10 @@ console.log(sym([1, 1, 2, 3], [5, 2, 1, 4]));
 //=========================================================================
 function sym(args) {
 	var argsArray = [];
-    var finalArr = [];
-    var firstArr;
-    var secondArr;
+  var finalArr = [];
+  var firstArr;
+  var secondArr;
+  var originalLength = arguments.length;
 
    function onlyUnique(value, index, self) {
      return self.indexOf(value) == index;
@@ -858,20 +859,13 @@ function sym(args) {
   //setting two arrs for now. will dynamically create this once it's working
   //potentially create diff rounds that create the first n second depending on the round
   var roundCounter = 0;
-  while(roundCounter <= argsArray.length) {
-  	 roundCounter++;
-    if(roundCounter == 1) {
-           firstArr = argsArray[0];
-           secondArr = argsArray[1];
-        }
-        else if(roundCounter == 2 && arguments.length >= 3) {
-        console.log("ROUND COUNTAAA isss 2");
-           firstArr = argsArray[0];
-           console.log("FIRST ARR LENGTH ", firstArr.length);
-           secondArr = argsArray[1];
-           console.log("SECOND ARR LENGTH ", secondArr.length);
-        }
-
+  while(roundCounter <= originalLength) {
+		firstArr = argsArray[0];
+    secondArr = argsArray[1];
+     if(secondArr == undefined) {
+    	console.log("YESSSSUUUUUUUUUUUUUUM gotta break ");
+      break;
+    }
     for(var i = 0; i < firstArr.length; i++ ) {
       var firstArrElem = firstArr[i];
       console.log("firstArrElem = ", firstArrElem);
@@ -891,23 +885,12 @@ function sym(args) {
       }
       console.log("FIRST ARR = ", firstArr);
       console.log("SECOND ARR = ", secondArr);
-    }
-    if(roundCounter == 1) {
-    	var finalArr = firstArr.concat(secondArr);
+    }//ifs deleted after this bracket
+  	var finalArr = firstArr.concat(secondArr);
       argsArray.shift();
       argsArray.shift();
       argsArray.unshift(finalArr);
 
-  		console.log("FINAL ARR POST WHILE LOOP =", finalArr);
-  		console.log("argsArray = ", argsArray);
-    }
-    if(roundCounter == 2) {
-    	var finalArr = firstArr.concat(secondArr);
-      argsArray.shift();
-      argsArray.shift();
-      argsArray.unshift(finalArr);
-    }
-
-  }
+  }//if go before this bracket
   return finalArr;
 }
