@@ -782,7 +782,9 @@
 //=================================================================================
 function sym(args) {
 	var argsArray = [];
-  var finalArr = [];
+    var finalArr = [];
+    var firstArr;
+    var secondArr;
 
    function onlyUnique(value, index, self) {
      return self.indexOf(value) == index;
@@ -801,37 +803,111 @@ function sym(args) {
   	var pushElem = true;
     if(arguments.length == 2) {
       if(roundCounter == 1) {
-        var firstArr = argsArray[0];
-        var secondArr = argsArray[1];
+         firstArr = argsArray[0];
+         secondArr = argsArray[1];
       }
       else if(roundCounter == 2) {
-        var firstArr = argsArray[1];
-        var secondArr = argsArray[0];
+         firstArr = argsArray[1];
+         secondArr = argsArray[0];
       }
       roundCounter++;
     }
-    var firstArr = argsArray[0];
-    var secondArr = argsArray[1];
+
     for(var i = 0; i < firstArr.length; i++ ) {
       var firstArrElem = firstArr[i];
       for(var j = 0; j < secondArr.length; j++) {
         var secondArrElem = secondArr[j];
         if(firstArrElem === secondArrElem) {
-          console.log("firstarr elem is equal to secondarrelem");
-          var pushElem = false;
+          console.log("firstarr elem is equal to secondarrelem", firstArrElem, secondArrElem);
+           pushElem = false;
           break;
         }
       }
-      console.log("pushElem = ", pushElem)
     	if(pushElem) {
-      	finalArr.push(firstArr[i]);
+      	console.log("PUSHING FIRST ARR ELEM ", firstArrElem);
+      	finalArr.push(firstArrElem);
       }
       pushElem = true;
     }
   }//while loop closing
-  console.log("ARGS ARRAY POST WHILE LOOP =", argsArray);
-
-
-
+  console.log("FINAL ARR POST WHILE LOOP =", finalArr);
+  return finalArr;
 }
+
 console.log(sym([1, 1, 2, 3], [5, 2, 1, 4]));
+
+
+//version 4
+//=========================================================================
+function sym(args) {
+	var argsArray = [];
+    var finalArr = [];
+    var firstArr;
+    var secondArr;
+
+   function onlyUnique(value, index, self) {
+     return self.indexOf(value) == index;
+  }
+  //iterates through arguments and creates an array of arrays
+  for(var i = 0; i < args.length; i++) {
+    if(arguments[i]) {
+    	var arrToPush = arguments[i].filter(onlyUnique);
+  	  argsArray.push(arrToPush);
+    }
+  }
+  //setting two arrs for now. will dynamically create this once it's working
+  //potentially create diff rounds that create the first n second depending on the round
+  var roundCounter = 0;
+  while(roundCounter <= argsArray.length) {
+  	 roundCounter++;
+    if(roundCounter == 1) {
+           firstArr = argsArray[0];
+           secondArr = argsArray[1];
+        }
+        else if(roundCounter == 2 && arguments.length >= 3) {
+        console.log("ROUND COUNTAAA isss 2");
+           firstArr = argsArray[0];
+           console.log("FIRST ARR LENGTH ", firstArr.length);
+           secondArr = argsArray[1];
+           console.log("SECOND ARR LENGTH ", secondArr.length);
+        }
+
+    for(var i = 0; i < firstArr.length; i++ ) {
+      var firstArrElem = firstArr[i];
+      console.log("firstArrElem = ", firstArrElem);
+      for(var j = 0; j < secondArr.length; j++) {
+        var secondArrElem = secondArr[j];
+        console.log("secondArrElem = ", secondArrElem);
+        if(firstArrElem === secondArrElem) {
+          console.log("firstarr elem is equal to secondarrelem", firstArrElem, secondArrElem);
+          console.log("i equals ", i, "j equals ", j)
+          var firstArrIndex = firstArr.indexOf(firstArrElem);
+          var secondArrIndex = secondArr.indexOf(secondArrElem);
+          firstArr.splice(firstArrIndex, 1);
+          secondArr.splice(secondArrIndex, 1);
+          i--;
+          j--;
+        }
+      }
+      console.log("FIRST ARR = ", firstArr);
+      console.log("SECOND ARR = ", secondArr);
+    }
+    if(roundCounter == 1) {
+    	var finalArr = firstArr.concat(secondArr);
+      argsArray.shift();
+      argsArray.shift();
+      argsArray.unshift(finalArr);
+
+  		console.log("FINAL ARR POST WHILE LOOP =", finalArr);
+  		console.log("argsArray = ", argsArray);
+    }
+    if(roundCounter == 2) {
+    	var finalArr = firstArr.concat(secondArr);
+      argsArray.shift();
+      argsArray.shift();
+      argsArray.unshift(finalArr);
+    }
+
+  }
+  return finalArr;
+}
