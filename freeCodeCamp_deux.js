@@ -850,8 +850,9 @@ function sym(args) {
      return self.indexOf(value) == index;
   }
   //iterates through arguments and creates an array of arrays
-  for(var i = 0; i < args.length; i++) {
+  for(var i = 0; i <= args.length; i++) {
     if(arguments[i]) {
+    console.log(arguments[i]);
     	var arrToPush = arguments[i].filter(onlyUnique);
   	  argsArray.push(arrToPush);
     }
@@ -859,9 +860,12 @@ function sym(args) {
   //setting two arrs for now. will dynamically create this once it's working
   //potentially create diff rounds that create the first n second depending on the round
   var roundCounter = 0;
-  while(roundCounter <= originalLength) {
+  while(roundCounter < originalLength) {
+  	roundCounter++;
 		firstArr = argsArray[0];
     secondArr = argsArray[1];
+    console.log("FIRST ARR FROM TOP = ", firstArr);
+    console.log("SECOND ARR FROM TOP = ", secondArr);
      if(secondArr == undefined) {
     	console.log("YESSSSUUUUUUUUUUUUUUM gotta break ");
       break;
@@ -886,11 +890,12 @@ function sym(args) {
       console.log("FIRST ARR = ", firstArr);
       console.log("SECOND ARR = ", secondArr);
     }//ifs deleted after this bracket
-  	var finalArr = firstArr.concat(secondArr);
+  		var finalArr = firstArr.concat(secondArr);
+      console.log("arrgsArray before shifting ==================================== ", argsArray);
       argsArray.shift();
       argsArray.shift();
       argsArray.unshift(finalArr);
 
-  }//if go before this bracket
+  }
   return finalArr;
 }
