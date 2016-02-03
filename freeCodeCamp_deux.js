@@ -899,3 +899,57 @@ function sym(args) {
   }
   return finalArr;
 }
+
+#38 Exact Change
+function drawer(price, cash, cid) {
+  var change = cash - price;
+  var changeDue = [];
+  console.log(change);
+
+  while(change >= 100) {
+  	change-= 100;
+    cid[8][1]-= 100;
+  }
+  while(change >= 20) {
+  	change-= 20;
+    cid[7][1]-= 20;
+  }
+  while(change >= 10) {
+  	change-= 10;
+    cid[6][1]-= 10;
+  }
+  while(change >= 5) {
+  	change-= 5;
+    cid[5][1]-= 5;
+  }
+  while(change >= 1) {
+  	change-= 1;
+    cid[4][1]-= 1
+  }
+  while(change >= .25) {
+  	change-= .25;
+    cid[3][1]-= .25;
+  }
+  while(change >= .10) {
+  	change-= .10;
+    cid[2][1]-= .1;
+  }
+  while(change >= .5) {
+  	change-= .5;
+    cid[1][1]-= .5;
+  }
+  while(change >= .1) {
+  	change-= .1;
+    cid[0][1]-= .1;
+  }
+
+
+
+
+  console.log(cid);
+  console.log(change);
+}
+
+
+
+drawer(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
