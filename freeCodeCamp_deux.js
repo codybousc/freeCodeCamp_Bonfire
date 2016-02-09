@@ -1003,7 +1003,7 @@ function drawer(price, cash, cid) {
 drawer(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
 
 
-Version 3
+//Version 3 Final Solution
 
 var denominations = [
 	{name: "ONE HUNDRED", value: 100},
@@ -1025,31 +1025,43 @@ function drawer(price, cash, cid) {
     .reduce(function(a, b) {return a + b; });
 
  	var regObject = cid
-  	.map(function(t) {regObj[t[0]] = t[1]; console.log(regObj)});
+  	.map(function(t) {regObj[t[0]] = t[1]; });
     regObj["total"] =  Math.ceil(registerTotal * 100) / 100;
-    console.log(regObj);
 
   if(regObj.total < change) {
-  	console.log("Insufficient Funds");
   	return "Insufficient Funds";
   }
   else if(regObj.total == change) {
-    console.log("Closed");
   	return "Closed";
   }
 
-  var changeArr = denominations.reduce(function(prev, cur) {
-  	value = 0;
+  var changeArr = denominations.reduce(function(prev, curr) {
+  	var value = 0;
+
+
   	while(regObj[curr.name] > 0 && change >= curr.value) {
-       change -= curr.val;
-        regObj[curr.name] -= curr.val;
-        value += curr.val;
+       	change -= curr.value;
+        regObj[curr.name] -= curr.value;
+        value += curr.value;
 
         change = Math.round(change * 100) / 100;
-    }
+        }
+
+        if(value > 0) {
+        		console.log("YESS", curr.name, value);
+            prev.push([ curr.name, value ]);
+        }
+        return prev;
+
 
   }, []);
 
+    if(changeArr.length < 1 || change > 0) {
+    return "Insufficient Funds";
+  }
+
+  return changeArr;
+
 }
 
-drawer(5, 400, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
+console.log(drawer(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]));
