@@ -903,48 +903,55 @@ function sym(args) {
 #38 Exact Change
 function drawer(price, cash, cid) {
   var change = cash - price;
-  var changeDue = [];
+
   console.log(change);
 
-  while(change >= 100) {
+  while(change >= 100 && cid[8][1] > 100) {
   	change-= 100;
     cid[8][1]-= 100;
   }
-  while(change >= 20) {
+  while(change >= 20 && cid[7][1] > 20) {
   	change-= 20;
     cid[7][1]-= 20;
   }
-  while(change >= 10) {
+  while(change >= 10 && cid[6][1] > 10) {
   	change-= 10;
     cid[6][1]-= 10;
   }
-  while(change >= 5) {
+  while(change >= 5 && cid[5][1] > 50) {
   	change-= 5;
     cid[5][1]-= 5;
   }
-  while(change >= 1) {
+  while(change >= 1 && cid[4][1] > 1) {
   	change-= 1;
     cid[4][1]-= 1
   }
-  while(change >= .25) {
+  while(change >= .25 && cid[3][1] > .25) {
   	change-= .25;
     cid[3][1]-= .25;
   }
-  while(change >= .10) {
+  while(change >= .10 && cid[2][1] > .10) {
   	change-= .10;
     cid[2][1]-= .1;
   }
-  while(change >= .5) {
-  	change-= .5;
-    cid[1][1]-= .5;
+  while(change >= .05 && cid[1][1] > .05) {
+  	change-= .05;
+    cid[1][1]-= .05;
   }
-  while(change >= .1) {
-  	change-= .1;
-    cid[0][1]-= .1;
+  while(change >= .01 && cid[0][1] > .01) {
+  	change-= .01;
+    cid[0][1]-= .01;
   }
 
-
-
+    for(var i = 0; i < cid.length; i++) {
+    	if(cid[i][1] == 0 && change == 0) {
+      	console.log("Closed");
+      }
+      else if(cid[i][1] < 0) {
+      	console.log("Insufficient Funds");
+        console.log(cid[i][0]);
+      }
+  }
 
   console.log(cid);
   console.log(change);
@@ -952,4 +959,97 @@ function drawer(price, cash, cid) {
 
 
 
+drawer(19.50, 20.00, [["PENNY", 0.50], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])
+
+#38 Version 2
+
+function drawer(price, cash, cid) {
+  var change = cash - price;
+  var total = 0;
+  var changeArray = [];
+  var oneHundred = 0;
+  var twenty = 0;
+  var ten = 0;
+
+	for(var i = 0; i < cid.length; i++) {
+  	total+= cid[i][1];
+  }
+  //deals with floating point innaccuracies
+  total =  Math.ceil(total * 100) / 100;
+
+  if(total < change) {
+  	return "Insufficient Funds";
+  }
+  else if(total == change) {
+  	return "Closed";
+  }
+  while(total >= 0) {
+  	if(change > 100) {
+    	oneHundred++;
+      total-= 100;
+    }
+    if(change > 20) {
+    twenty++;
+    total-= 20;
+    }
+  }
+  console.log("Hundreds ", oneHundred);
+  console.log("Twenties ", twenty);
+  console.log("total = ", total);
+
+
+}
+
 drawer(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
+
+
+Version 3
+
+var denominations = [
+	{name: "ONE HUNDRED", value: 100},
+  {name: "TWENTY", value: 20},
+  {name: "TEN", value: 10},
+  {name: "FIVE", value: 5},
+  {name: "ONE", value: 1},
+  {name: "QUARTER", value: 0.25},
+  {name: "DIME", value: 0.10},
+  {name: "NICKEL", value: 0.05},
+  {name: "PENNY", value: 0.01}
+]
+
+function drawer(price, cash, cid) {
+  var change = cash - price;
+	var regObj = {};
+	var registerTotal = cid
+  	.map(function(t) {return t[1];})
+    .reduce(function(a, b) {return a + b; });
+
+ 	var regObject = cid
+  	.map(function(t) {regObj[t[0]] = t[1]; console.log(regObj)});
+    regObj["total"] =  Math.ceil(registerTotal * 100) / 100;
+    console.log(regObj);
+
+  if(regObj.total < change) {
+  	console.log("Insufficient Funds");
+  	return "Insufficient Funds";
+  }
+  else if(regObj.total == change) {
+    console.log("Closed");
+  	return "Closed";
+  }
+
+  var changeArr = denominations.reduce(function(prev, cur) {
+  	value = 0;
+  	while(regObj[curr.name] > 0 && change >= curr.value) {
+       change -= curr.val;
+        regObj[curr.name] -= curr.val;
+        value += curr.val;
+
+        change = Math.round(change * 100) / 100;
+    }
+
+  }, []);
+
+}
+
+drawer(5, 400, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
