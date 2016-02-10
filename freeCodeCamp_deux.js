@@ -1065,3 +1065,31 @@ function drawer(price, cash, cid) {
 }
 
 console.log(drawer(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]));
+
+//#39
+
+function inventory(arr1, arr2) {
+	var finalArr = arr1.concat(arr2);
+  for(var i = 0; i < finalArr.length; i++) {
+  	var firstElem = finalArr[i];
+    for(var j = 1; j < finalArr.length; j++) {
+    	var secondElem = finalArr[j];
+      if(firstElem[1] == secondElem[1] && firstElem[0] != secondElem[0]) {
+      	var choppingBlock = finalArr.indexOf(firstElem);
+        secondElem[0] += firstElem[0];
+        if (choppingBlock > -1) {
+            finalArr.splice(choppingBlock, 1);
+        }
+        break;
+      }
+    }
+  }
+      	finalArr = finalArr.sort(function(current, next) {
+      		return current[1] > next[1] ? 1: -1;
+        })
+        return finalArr;
+
+     }
+
+
+console.log(inventory([], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]]));
