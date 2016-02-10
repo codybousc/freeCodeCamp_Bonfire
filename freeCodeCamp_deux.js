@@ -1095,7 +1095,7 @@ function inventory(arr1, arr2) {
 console.log(inventory([], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]]));
 
 //#40
-var permArr = [], usedChars = [];
+var permArr = [], usedChars = [], finalArr = [];
 function permAlone(str) {
 	  var i, ch, chars = str.split("");
   	for (i = 0; i < chars.length; i++) {
@@ -1106,7 +1106,14 @@ function permAlone(str) {
     chars.splice(i, 0, ch);
     usedChars.pop();
   }
-return permArr
+ permArr = permArr.filter(function() {
+ 	var pattern = (/([a-z])\1/i);
+  var result = pattern.test(permArr);
+    if(!result) {
+      finalArr.push(permArr);
+    }
+ })
+ return finalArr.length;
 }
 
-console.log(permAlone('aabsdf'));
+console.log(permAlone('abfdefa'));
