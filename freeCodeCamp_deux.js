@@ -1093,3 +1093,20 @@ function inventory(arr1, arr2) {
 
 
 console.log(inventory([], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]]));
+
+//#40
+var permArr = [], usedChars = [];
+function permAlone(str) {
+	  var i, ch, chars = str.split("");
+  	for (i = 0; i < chars.length; i++) {
+    ch = chars.splice(i, 1);
+    usedChars.push(ch);
+    if (chars.length == 0) permArr[permArr.length] = usedChars.join("");
+    permAlone(chars.join(""));
+    chars.splice(i, 0, ch);
+    usedChars.pop();
+  }
+return permArr
+}
+
+console.log(permAlone('aabsdf'));
