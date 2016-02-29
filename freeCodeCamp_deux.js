@@ -1117,3 +1117,22 @@ function permAlone(str) {
 }
 
 console.log(permAlone('abfdefa'));
+
+//#41 Ceasers Cipher
+function rot13(str) {
+	var charCDArr = [];
+  for(var i = 0; i < str.length; i++) {
+    if(str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
+    	if(str.charCodeAt(i) < 78) {
+        charCDArr.push(String.fromCharCode(str.charCodeAt(i) + 13))
+      }
+      else {
+      	charCDArr.push(String.fromCharCode(str.charCodeAt(i) - 13));
+      }
+    }
+  }
+  return charCDArr;
+}
+
+// Change the inputs below to test
+console.log(rot13("SERR PBQR PNZCAZ!!!"));
