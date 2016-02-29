@@ -1122,7 +1122,10 @@ console.log(permAlone('abfdefa'));
 function rot13(str) {
 	var charCDArr = [];
   for(var i = 0; i < str.length; i++) {
-    if(str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
+  	if(str.charCodeAt(i) < 65) {
+    	charCDArr.push(String.fromCharCode(str.charCodeAt(i)))
+    }
+    else if(str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
     	if(str.charCodeAt(i) < 78) {
         charCDArr.push(String.fromCharCode(str.charCodeAt(i) + 13))
       }
@@ -1131,8 +1134,8 @@ function rot13(str) {
       }
     }
   }
-  return charCDArr;
+  return charCDArr.join("");
 }
 
 // Change the inputs below to test
-console.log(rot13("SERR PBQR PNZCAZ!!!"));
+console.log(rot13("SERR PBQR PNZCAZ"));
